@@ -1,0 +1,98 @@
+Drop database if exists izibili;
+create database izibili;
+Use izibili;
+
+Set Names utf8 ;
+Set Character_set_client = utf8mb4;
+
+create table users (
+	id int AUTO_INCREMENT NOT NULL unique,
+    username varchar(20) NOT NULL unique,
+	f_name varchar(50) NOT NULL,
+	l_name varchar(50) NOT NULL,
+	gender varchar(7) NOT NULL,
+    constraint genderValues check (gender in ('male', 'female')),
+	Primary key (Username)
+)Engine=InnoDB Auto_INCREMENT=5 CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+-- Insert Into Users Values (01, 'flew12', 'florence', 'shawn', 'female', '1941-04-14');
+-- Insert into Users Values (02, 'dew43', 'delvin', 'sheep', 'male', '1965-06-28');
+-- insert into Users values (03, 's.Gonzal', 'Shea', 'Gonzales', 'male', '1998-09-12');-- 
+create table email (
+	id int auto_increment not null unique,
+	email varchar(30) not null unique,
+    passwords varchar(50) not null unique,
+    primary key (email)
+)Engine=InnoDB Auto_INCREMENT=5 CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+create table users_email (
+	id int auto_increment not null unique,
+    username varchar(20) NULL unique,
+	email varchar(30) null unique,
+    foreign key (username) references users(username),
+    foreign key (email) references email(email)
+)Engine=InnoDB Auto_INCREMENT=5 CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+create table investors (
+	investor_id varchar(12) not null unique,
+    current_investment numeric null,
+    account_type varchar(14) not null,
+    bus_sector varchar(50) null,
+    constraint account_typeValue check (account_type in ('investor')),
+    primary key (investor_id)
+)Engine=InnoDB Auto_INCREMENT=5 CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+create table entrepreneur (
+	entre_id varchar(12) not null unique,
+    phone_number int not null,
+    date_of_birth numeric not null,
+    account_type varchar(14) not null,
+    bus_sector varchar(50) null,
+    constraint account_Value check (account_type in ('entrepreneur')),
+    primary key (entre_id)
+)Engine=InnoDB Auto_INCREMENT=5 CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+create table business_information (
+	bus_id int not null unique,
+    bus_name varchar(70) not null unique,
+    bus_goals varchar(500) null,
+    bus_start numeric null,
+    bus_description varchar(500) null,
+    bus_networth numeric null,
+    investor_id varchar(12) null,
+    bus_sector varchar(100) null,
+    username varchar(20) null,
+    turn_over_last_year numeric null,
+    bus_street varchar(30) null,
+    bus_state varchar(30) null,
+    zip_code varchar(7) null,
+    foreign key (investor_id) references investors(investor_id),
+    foreign key (username) references users(username)
+)Engine=InnoDB Auto_INCREMENT=5 CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+create table address (
+	bus_id int not null unique,
+    username varchar(20) not null unique,
+    bus_street varchar(30) null,
+    street_number varchar(5) null,
+    state varchar(30) null,
+    country varchar(50) null,
+    foreign key (bus_id) references business_information(bus_id),
+    foreign key (username) references users(username),
+    primary key (bus_id, username)
+)Engine=InnoDB Auto_INCREMENT=5 CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+create table zip (
+	zip_code varchar(7) not null unique,
+    county varchar(50) null,
+    primary key (zip_code)
+)Engine=InnoDB Auto_INCREMENT=5 CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+    
+create table zip_address (
+	zip_code varchar(7) not null unique,
+    bus_id int not null unique,
+    username varchar(20) not null unique,
+    foreign key (zip_code) references zip(zip_code),
+    foreign key (bus_id) references business_information(bus_id),
+    foreign key (username) references users(username),
+    primary key (zip_code, bus_id, username)
+)Engine=InnoDB Auto_INCREMENT=5 CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;

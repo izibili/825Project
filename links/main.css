@@ -1,0 +1,119 @@
+*{
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    margin: 0px;
+    padding: 0px;
+    text-decoration: none;
+    box-sizing: border-box;
+    
+}
+body{
+    min-height: 100vh;
+    background-color:rgba(160, 188, 247, 0.925);
+}
+h1{
+    text-align: left;
+    margin: 50px;
+    color: rgb(7, 8, 73);
+    font-size: 60px;
+    cursor: pointer;
+}
+.welcome{
+    text-align: left;
+    margin: 50px;
+    color: rgb(20, 13, 119);
+    font-size: 20px;
+}
+
+h2{
+    text-align: center;
+    margin-bottom: 20px;
+    color: rgb(7, 34, 92);
+    font-size: 25px;
+}
+.plat{
+    width: 100%;
+}
+.choose{
+    height: 70px;
+    padding-top: 5px;
+    text-align: center;
+}
+.content{
+    height: 50px;
+    width: 100%;
+    align-items: center;
+    position:relative;
+}
+.input{
+    margin-left: 60px;
+    height: 10px;
+    width: 80px;
+}
+.submit{
+    width: 100px;
+    height: 40px;
+    border-radius: 20px;
+    background-color: rgb(7, 73, 134);
+}
+
+.form-content{
+    /* height: 50px; */
+    min-width: 150px;
+    align-items: left;
+    position:relative;
+    padding-left: 0px;
+    margin: 60px;
+    
+}
+.sub-content{
+    min-width: 100px;
+    align-items: left;
+    position:relative;
+    padding-left: 0px;
+    margin: 20px;
+    border-color: #631414;
+    border-radius: 5px;
+}
+.item{
+    margin-top: 5px;
+    margin-bottom: 0px;
+    margin-right: 5px;
+    align-items: left;
+}
+.adjust{
+    background-color: none;
+    border-radius: 5px;
+    width: 50%;
+    height: 400px;
+    padding-left: 20px;
+    padding-top: 60px;
+    padding-bottom: 20px;
+    left: 5%;
+    top: 20%;
+    bottom: 10%;
+    right: 5%;
+    transform: translate(50%);
+    display: grid;
+	grid-template-columns: auto auto auto;
+	grid-template-rows: auto auto;
+}
+
+.choosebtnleft{
+    background-color: #31855d;
+    border: 2px solid #f8f9fa;
+    border-radius: 20px;
+    color: #dee4e9;
+    font-family: Roboto,arial,sans-serif;
+    font-size: 28px;
+    margin: 10px 10px;
+    padding: 0 16px;
+    line-height: 27px;
+    height: 100px;
+    min-width: 200px;
+    text-align: center;
+    cursor: pointer;
+    user-select: none;
+    position: relative;
+
+    font-size: 35px;
+}
